@@ -1,0 +1,3 @@
+aws:
+  secret-key: ${AWS_SECRET_KEY}
+  secret-id: ${AWS_SECRET_KEY_ID}
