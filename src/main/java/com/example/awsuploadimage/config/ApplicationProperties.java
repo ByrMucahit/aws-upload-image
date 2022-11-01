@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class ApplicationProperties {
 
-    private String awsSecretKey;
+    private String secretKey;
 
-    private String awsSecretId;
+    private String secretId;
 }
