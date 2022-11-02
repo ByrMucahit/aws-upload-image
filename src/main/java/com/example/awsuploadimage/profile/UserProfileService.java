@@ -18,5 +18,7 @@ public class UserProfileService {
     }
 
     public void uploadUserProfileImage(UUID userProfileId, MultipartFile file) {
+        //1. Check if image is not empty.
+        //2.
     }
 }
