@@ -21,19 +21,33 @@ const UserProfiles = () => {
     return userProfiles.map((userProfiles, index) => {
         return (
             <div key={index}>
+                {userProfiles.userProfileId ?
+                    <img src={`http://localhost:8080/api/v1/user-profile/${userProfiles.userProfileId}/image/download`}/> : null}
                 <br/>
-                <h1>{userProfiles.userName}</h1>
+                <h1>{userProfiles.username}</h1>
                 <p>{userProfiles.userProfileId}</p>
-                <Dropzone/>
+                <Dropzone userProfileId={userProfiles.userProfileId}/>
                 <br/>
             </div>)
     });
 }
 
-function Dropzone() {
+function Dropzone({userProfileId}) {
     const onDrop = useCallback(acceptedFiles => {
         const file = acceptedFiles[0];
         console.log(file);
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        axios.post(`http://localhost:8080/api/v1/user-profile/${userProfileId}/image/upload`, formData,
+            {
+                headers: {"Content-Type": "multipart/form-data"}
+            }).then(() => {
+            console.log("file uploaded successfully")
+        }).catch(err => {
+            console.log(err);
+        })
     }, [])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
