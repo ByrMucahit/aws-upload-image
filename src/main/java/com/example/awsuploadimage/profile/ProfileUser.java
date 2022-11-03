@@ -16,8 +16,8 @@ import java.util.UUID;
 @EqualsAndHashCode
 public class ProfileUser {
 
-    private UUID userProfileId;
-    private String userName;
+    private final UUID userProfileId;
+    private final String userName;
     private Optional<String> userProfileImageLink; // S3 key
 
 }
